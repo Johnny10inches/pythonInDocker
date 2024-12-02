@@ -12,7 +12,7 @@ RUN apt update && apt install -qqy \
     && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Копируем файл requirements.txt в контейнер
-COPY ./requirements.txt /tmp/
+COPY app/requirements.txt /tmp/
 
 # Устанавливаем зависимости из requirements.txt
 RUN pip install -qr /tmp/requirements.txt
@@ -21,7 +21,7 @@ RUN pip install -qr /tmp/requirements.txt
 WORKDIR /opt/webapp
 
 # Копируем приложение в контейнер
-COPY ./app /opt/webapp
+COPY ./app/app.py /opt/webapp
 
 # Указываем порт, на котором работает приложение
 EXPOSE 5000
